@@ -22,7 +22,7 @@
  * (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS
  * SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
  */
-package net.runelite.client.plugins.stat_output;
+package com.stat_output;
 
 import java.net.*;
 import java.io.*;
@@ -56,13 +56,9 @@ import net.runelite.client.plugins.PluginDescriptor;
 @Slf4j
 @PluginDescriptor(
 		name = "Stat output",
-		description = "Output health and stats",
-		tags = {"nothing	"}
+		description = "Output health and stats"
 )
-
-
-
-public class Stat_Output extends Plugin
+public class StatOutputPlugin extends Plugin
 {
 
 
@@ -88,8 +84,9 @@ public class Stat_Output extends Plugin
 	public static void postValuesNumber(String address,int value){
 		String temp = "{"+"\"" +address.toLowerCase() +"\": " + value + "}";
 
-
 		try {
+			// TODO look at the okhttp client instead of trying to do it like this
+			// TODO you haven't got a hostname here
 			String request = "http://" +"/" + address;
 			URL url = new URL(request);
 			HttpURLConnection con = (HttpURLConnection) url.openConnection();
@@ -116,6 +113,7 @@ public class Stat_Output extends Plugin
 	}
 
 	public static void postValuesItem(String address,String Element1, int value1,String Element2, int value2,String Element3, int value3){
+		// TODO use gson to build json strings
 		String idTemp1 = "\"" + Element1 + "\": " + value1 +",";
 		String idTemp2 = "\"" + Element2 + "\": " + value2 +",";
 		String idTemp3 = "\"" + Element3 + "\": " + value3;
