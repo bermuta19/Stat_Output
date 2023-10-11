@@ -90,7 +90,7 @@ public class Stat_Output extends Plugin
 
 
 		try {
-			String request = "http://192.168.1.95:8000" +"/" + address;
+			String request = "http://" +"/" + address;
 			URL url = new URL(request);
 			HttpURLConnection con = (HttpURLConnection) url.openConnection();
 			con.setRequestMethod("POST");
@@ -122,7 +122,7 @@ public class Stat_Output extends Plugin
 
 		try {
 			String temp = "{" + idTemp1 + idTemp2 + idTemp3 + "}";
-			String request = "http://192.168.1.95:8000" +"/" + address;
+			String request = "" +"/" + address;
 			URL url = new URL(request);
 			HttpURLConnection con = (HttpURLConnection) url.openConnection();
 			con.setRequestMethod("POST");
